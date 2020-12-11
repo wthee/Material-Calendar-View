@@ -494,11 +494,9 @@ public class CalendarView extends LinearLayout {
         mViewPager.setSwipeEnabled(mCalendarProperties.getSwipeEnabled());
     }
 
-    public int getmFirstDayOfWeek() {
-        return mFirstDayOfWeek;
-    }
 
     public void setmFirstDayOfWeek(int mFirstDayOfWeek) {
+        mCalendarProperties.setmFirstDayOfWeek(mFirstDayOfWeek);
         this.mFirstDayOfWeek = mFirstDayOfWeek;
     }
 }

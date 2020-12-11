@@ -35,7 +35,7 @@ public class CalendarProperties {
     public static final int CALENDAR_SIZE = 2401;
     public static final int FIRST_VISIBLE_PAGE = CALENDAR_SIZE / 2;
 
-    private int mCalendarType, mHeaderColor, mHeaderLabelColor, mSelectionColor, mTodayLabelColor, mTodayColor,
+    private int mFirstDayOfWeek, mCalendarType, mHeaderColor, mHeaderLabelColor, mSelectionColor, mTodayLabelColor, mTodayColor,
             mDialogButtonsColor, mItemLayoutResource, mDisabledDaysLabelsColor, mHighlightedDaysLabelsColor, mPagesColor,
             mAbbreviationsBarColor, mAbbreviationsLabelsColor, mDaysLabelsColor, mSelectionLabelColor,
             mAnotherMonthsDaysLabelsColor, mHeaderVisibility, mNavigationVisibility, mAbbreviationsBarVisibility, mMaximumDaysRange;
@@ -424,5 +424,13 @@ public class CalendarProperties {
 
     public void setTodayColor(int todayColor) {
         mTodayColor = todayColor;
+    }
+
+    public int getmFirstDayOfWeek() {
+        return mFirstDayOfWeek;
+    }
+
+    public void setmFirstDayOfWeek(int mFirstDayOfWeek) {
+        this.mFirstDayOfWeek = mFirstDayOfWeek;
     }
 }

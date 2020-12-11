@@ -248,11 +248,7 @@ public class CalendarView extends LinearLayout {
     }
 
     private void setCalendarRowLayout() {
-        if (mCalendarProperties.getEventsEnabled()) {
-            mCalendarProperties.setItemLayoutResource(R.layout.calendar_view_day);
-        } else {
-            mCalendarProperties.setItemLayoutResource(R.layout.calendar_view_picker_day);
-        }
+        mCalendarProperties.setItemLayoutResource(R.layout.calendar_view_day);
     }
 
     private void initUiElements() {
@@ -351,10 +347,12 @@ public class CalendarView extends LinearLayout {
     // This method calls page change listeners after swipe calendar or click arrow buttons
     private void callOnPageChangeListeners(int position) {
         if (position > mCurrentPage && mCalendarProperties.getOnForwardPageChangeListener() != null) {
+            mViewPager.reMeasureCurrentPage();
             mCalendarProperties.getOnForwardPageChangeListener().onChange();
         }
 
         if (position < mCurrentPage && mCalendarProperties.getOnPreviousPageChangeListener() != null) {
+            mViewPager.reMeasureCurrentPage();
             mCalendarProperties.getOnPreviousPageChangeListener().onChange();
         }
 

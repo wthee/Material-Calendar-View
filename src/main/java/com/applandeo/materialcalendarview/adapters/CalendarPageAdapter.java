@@ -70,6 +70,8 @@ public class CalendarPageAdapter extends PagerAdapter {
         return mCalendarGridView;
     }
 
+
+
     public void addSelectedDay(SelectedDay selectedDay) {
         if (!mCalendarProperties.getSelectedDays().contains(selectedDay)) {
             mCalendarProperties.getSelectedDays().add(selectedDay);
@@ -123,6 +125,8 @@ public class CalendarPageAdapter extends PagerAdapter {
         // Get a number of the first day of the week
         int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
+        int currentMonth = calendar.get(Calendar.MONTH) + 1;
+
         // Count when month is beginning
         int firstDayOfWeek = mCalendarProperties.getmFirstDayOfWeek();
         int monthBeginningCell = (dayOfWeek < firstDayOfWeek ? 7 : 0) + dayOfWeek - firstDayOfWeek;
@@ -131,13 +135,19 @@ public class CalendarPageAdapter extends PagerAdapter {
         calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell);
 
         /*
-        Get all days of one page (42 is a number of all possible cells in one page
-        (a part of previous month, current month and a part of next month))
+        Get all days of a month
          */
-        while (days.size() < 42) {
-            days.add(calendar.getTime());
+        while (days.size() < monthBeginningCell + calendar.get(Calendar.DAY_OF_MONTH)) {
+            // days of the month
+            if (currentMonth == calendar.get(Calendar.MONTH) + 1) {
+                days.add(calendar.getTime());
+            } else {
+                // hide days of pre month
+                days.add(new Date(0));
+            }
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
+
 
         mPageMonth = calendar.get(Calendar.MONTH) - 1;
         CalendarDayAdapter calendarDayAdapter = new CalendarDayAdapter(this, mContext,

@@ -2,6 +2,7 @@ package com.applandeo.materialcalendarview.extensions;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -15,6 +16,7 @@ public class CalendarViewPager extends ViewPager {
 
     private boolean mSwipeEnabled = true;
 
+
     public CalendarViewPager(Context context) {
         super(context);
     }
@@ -23,28 +25,26 @@ public class CalendarViewPager extends ViewPager {
         super(context, attrs);
     }
 
-    //This method is needed to get wrap_content height for ViewPager
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int height = 0;
-
-        for (int i = 0; i < getChildCount(); i++) {
-            View child = getChildAt(i);
-            child.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-
-            int h = child.getMeasuredHeight();
-
-            if (h > height){
-                height = h;
+        try {
+            View child = getChildAt(0);
+            if (child != null) {
+                child.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+                int h = child.getMeasuredHeight();
+                heightMeasureSpec = MeasureSpec.makeMeasureSpec(h, MeasureSpec.EXACTLY);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        if (height != 0) {
-            heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
-        }
-
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
+
+
+    public void reMeasureCurrentPage() {
+        requestLayout();
+    }
+
 
     public void setSwipeEnabled(boolean swipeEnabled) {
         this.mSwipeEnabled = swipeEnabled;

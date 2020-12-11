@@ -66,6 +66,7 @@ public class CalendarView extends LinearLayout {
     private ImageButton mPreviousButton;
     private TextView mCurrentMonthLabel;
     private int mCurrentPage;
+    private int mFirstDayOfWeek = 1;
     private CalendarViewPager mViewPager;
 
     private CalendarProperties mCalendarProperties;
@@ -183,6 +184,9 @@ public class CalendarView extends LinearLayout {
 
         Drawable forwardButtonSrc = typedArray.getDrawable(R.styleable.CalendarView_forwardButtonSrc);
         mCalendarProperties.setForwardButtonSrc(forwardButtonSrc);
+
+        int firstDayOfWeek = typedArray.getInt(R.styleable.CalendarView_firstDayOfWeek, 1);
+        setmFirstDayOfWeek(firstDayOfWeek);
     }
 
     private void initAttributes() {
@@ -199,7 +203,7 @@ public class CalendarView extends LinearLayout {
         AppearanceUtils.setAbbreviationsBarColor(getRootView(), mCalendarProperties.getAbbreviationsBarColor());
 
         AppearanceUtils.setAbbreviationsLabels(getRootView(), mCalendarProperties.getAbbreviationsLabelsColor(),
-                mCalendarProperties.getFirstPageCalendarDate().getFirstDayOfWeek());
+                mFirstDayOfWeek);
 
         AppearanceUtils.setPagesColor(getRootView(), mCalendarProperties.getPagesColor());
 
@@ -488,5 +492,13 @@ public class CalendarView extends LinearLayout {
     public void setSwipeEnabled(boolean swipeEnabled) {
         mCalendarProperties.setSwipeEnabled(swipeEnabled);
         mViewPager.setSwipeEnabled(mCalendarProperties.getSwipeEnabled());
+    }
+
+    public int getmFirstDayOfWeek() {
+        return mFirstDayOfWeek;
+    }
+
+    public void setmFirstDayOfWeek(int mFirstDayOfWeek) {
+        this.mFirstDayOfWeek = mFirstDayOfWeek;
     }
 }

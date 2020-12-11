@@ -26,7 +26,7 @@ public final class CalendarUtils {
     /*
     Utils method to create drawable containing text
      */
-    public static Drawable getDrawableText(Context context, String text, Typeface typeface, int color, int size) {
+    public static Drawable getDrawableText(Context context, String text, int color, int size) {
         Resources resources = context.getResources();
         Bitmap bitmap = Bitmap.createBitmap(48, 48, Bitmap.Config.ARGB_8888);
 
@@ -34,7 +34,7 @@ public final class CalendarUtils {
 
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        paint.setTypeface(typeface != null ? typeface : Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         paint.setColor(ContextCompat.getColor(context, color));
 
         float scale = resources.getDisplayMetrics().density;

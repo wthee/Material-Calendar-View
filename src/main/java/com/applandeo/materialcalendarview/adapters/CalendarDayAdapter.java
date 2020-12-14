@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.annimon.stream.Stream;
-import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.R;
 import com.applandeo.materialcalendarview.utils.CalendarProperties;
 import com.applandeo.materialcalendarview.utils.DateUtils;
@@ -113,7 +112,7 @@ class CalendarDayAdapter extends ArrayAdapter<Date> {
     }
 
     private boolean isSelectedDay(Calendar day) {
-        return mCalendarProperties.getCalendarType() != CalendarView.CLASSIC && day.get(Calendar.MONTH) == mPageMonth
+        return day.get(Calendar.MONTH) == mPageMonth
                 && mCalendarPageAdapter.getSelectedDays().contains(new SelectedDay(day));
     }
 

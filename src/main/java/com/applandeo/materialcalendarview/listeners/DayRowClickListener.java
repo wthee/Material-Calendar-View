@@ -53,17 +53,6 @@ public class DayRowClickListener implements AdapterView.OnItemClickListener {
                 case CalendarView.ONE_DAY_PICKER:
                     selectOneDay(view, day);
                     break;
-
-                case CalendarView.MANY_DAYS_PICKER:
-                    selectManyDays(view, day);
-                    break;
-
-                case CalendarView.RANGE_PICKER:
-                    selectRange(view, day);
-                    break;
-
-                case CalendarView.CLASSIC:
-                    mCalendarPageAdapter.setSelectedDay(new SelectedDay(view, day));
             }
         }
     }

@@ -54,10 +54,7 @@ import static com.applandeo.materialcalendarview.utils.CalendarProperties.FIRST_
 
 public class CalendarView extends LinearLayout {
 
-    public static final int CLASSIC = 0;
     public static final int ONE_DAY_PICKER = 1;
-    public static final int MANY_DAYS_PICKER = 2;
-    public static final int RANGE_PICKER = 3;
 
     private Context mContext;
     private CalendarPageAdapter mCalendarPageAdapter;
@@ -161,7 +158,7 @@ public class CalendarView extends LinearLayout {
         int highlightedDaysLabelsColor = typedArray.getColor(R.styleable.CalendarView_highlightedDaysLabelsColor, 0);
         mCalendarProperties.setHighlightedDaysLabelsColor(highlightedDaysLabelsColor);
 
-        int calendarType = typedArray.getInt(R.styleable.CalendarView_type, CLASSIC);
+        int calendarType = typedArray.getInt(R.styleable.CalendarView_type, ONE_DAY_PICKER);
         mCalendarProperties.setCalendarType(calendarType);
 
         int maximumDaysRange = typedArray.getInt(R.styleable.CalendarView_maximumDaysRange, 0);
@@ -172,8 +169,7 @@ public class CalendarView extends LinearLayout {
             mCalendarProperties.setCalendarType(ONE_DAY_PICKER);
         }
 
-        boolean eventsEnabled = typedArray.getBoolean(R.styleable.CalendarView_eventsEnabled,
-                mCalendarProperties.getCalendarType() == CLASSIC);
+        boolean eventsEnabled = typedArray.getBoolean(R.styleable.CalendarView_eventsEnabled, true);
         mCalendarProperties.setEventsEnabled(eventsEnabled);
 
         boolean swipeEnabled = typedArray.getBoolean(R.styleable.CalendarView_swipeEnabled, true);

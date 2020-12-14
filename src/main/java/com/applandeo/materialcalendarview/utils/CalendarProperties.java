@@ -30,9 +30,9 @@ public class CalendarProperties {
 
     /**
      * A number of months (pages) in the calendar
-     * 2401 months means 1200 months (100 years) before and 1200 months after the current month
+     * 481 months means 240 months (20 years) before and 240 months after the current month
      */
-    public static final int CALENDAR_SIZE = 2401;
+    public static final int CALENDAR_SIZE = 481;
     public static final int FIRST_VISIBLE_PAGE = CALENDAR_SIZE / 2;
 
     private int mFirstDayOfWeek, mCalendarType, mHeaderColor, mHeaderLabelColor, mSelectionColor, mTodayLabelColor, mTodayColor,
